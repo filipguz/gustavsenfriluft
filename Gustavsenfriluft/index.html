@@ -1,0 +1,528 @@
+<!--
+      /\          ~  ~
+     /  \   /\      ~   ~   __/|
+    / /\ \ /  \  ~     ~  /  _/_
+   / /  \// /\ \   ~    _/  /  / \
+  /_/    /_/  \_\______/____/___\_\
+     _  _   _   _   _   _   _   _
+    / \/ \ / \ / \ / \ / \ / \ / \
+   ~  ~   ~   ~   ~   ~   ~   ~   ~
+
+    Friluftsliv · Gustavsen Friluft
+   Made by https://github.com/filipguz
+-->
+
+
+
+<!doctype html>
+<html lang="no">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Gustavsen Friluft — Surf · Windsurf · Livredning</title>
+  <meta name="description" content="Gustavsen Friluft — kurs og aktiviteter i surf, windsurf og livredning på Sørlandet. Fokus på trygghet, mestring og bærekraft.">
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Gustavsen Friluft — Surf · Windsurf · Livredning">
+  <meta property="og:description" content="Kurs og opplevelser på Sørlandet. Faglig trygghet, sikkerhet og mestring i fokus.">
+  <meta property="og:image" content="https://dittdomene.no/img/og-image.jpg">
+  <meta property="og:url" content="https://gustavsenfriluft.no">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Structured data (LocalBusiness) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"LocalBusiness",
+    "name":"Gustavsen Friluft",
+    "description":"Kurs og aktiviteter i surf, windsurf og livredning på Sørlandet.",
+    "telephone":"+47 944 35 220",
+    "email":"filip@gustavsenfriluft.no",
+    "address":{"@type":"PostalAddress","addressLocality":"Kristiansand","addressRegion":"Agder","addressCountry":"NO"},
+    "url":"https://gustavsenfriluft.no"
+  }
+  </script>
+
+  <style>
+    :root{
+      --navy: #05343a;    /* litt mørkere for bedre kontrast */
+      --accent: #0c6b63;
+      --cream: #f7f3ea;
+      --muted: #6b7280;
+      --container: 1100px;
+      --radius: 12px;
+      --gap: 16px;
+      --pad: 18px;
+      --focus: #0c6b63;
+      --max-content-width: 1100px;
+    }
+
+    /* Base reset */
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      background:var(--cream);
+      color:var(--navy);
+      padding:28px;
+      line-height:1.45;
+      -webkit-text-size-adjust:100%;
+    }
+
+    /* Skip link */
+    .skip-link{
+      position:absolute;
+      left:-999px;
+      top:auto;
+      width:1px;
+      height:1px;
+      overflow:hidden;
+    }
+    .skip-link:focus{
+      left:8px;
+      top:8px;
+      width:auto;
+      height:auto;
+      padding:8px 12px;
+      background:#fff;
+      border-radius:8px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.12);
+      z-index:2000;
+    }
+
+    .page{
+      width:100%;
+      max-width:var(--max-content-width);
+      margin:0 auto;
+    }
+
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:var(--gap);
+      margin-bottom:20px;
+    }
+
+    /* Branding */
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    .logo{
+      width:84px;
+      height:84px;
+      object-fit:contain;
+      background:white;
+      padding:10px;
+      border-radius:12px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.06);
+      flex-shrink:0;
+    }
+
+    .brand h1{
+      font-family: Georgia, serif;
+      font-size:20px;
+      margin-bottom:4px;
+      line-height:1.05;
+    }
+
+    .brand p{
+      font-size:12px;
+      color:var(--muted);
+      margin:0;
+    }
+
+    /* NAV */
+    .nav-wrap{display:flex;align-items:center;gap:12px;}
+    nav{
+      display:flex;
+      gap:14px;
+    }
+    nav a{
+      text-decoration:none;
+      color:var(--navy);
+      font-weight:600;
+      padding:8px 10px;
+      border-radius:8px;
+    }
+    nav a:hover, nav a:focus{ background:rgba(12,107,99,0.06); text-decoration:none; outline:none; }
+
+    /* Nav toggle for mobile */
+    #nav-toggle{
+      display:none;
+      background:transparent;
+      border:2px solid var(--navy);
+      padding:8px 10px;
+      border-radius:10px;
+      font-weight:700;
+      color:var(--navy);
+    }
+
+    /* HERO */
+    .hero{
+      display:flex;
+      gap:28px;
+      align-items:center;
+      background:linear-gradient(180deg,#ffffff60,#ffffff00);
+      padding:28px;
+      border-radius:var(--radius);
+    }
+
+    .hero-left{flex:1;min-width:0}
+    .hero-left h2{
+      font-family: Georgia, serif;
+      font-size: clamp(22px, 4vw, 34px);
+      margin-bottom:10px;
+      line-height:1.05;
+    }
+    .lead{
+      color:var(--muted);
+      margin-bottom:18px;
+      font-size:16px;
+    }
+
+    .cta{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:10px 14px;
+      border-radius:10px;
+      border:2px solid var(--navy);
+      text-decoration:none;
+      font-weight:700;
+      color:var(--navy);
+      cursor:pointer;
+      transition:transform .12s ease, box-shadow .12s ease;
+      min-height:44px;
+    }
+    .btn:hover{ transform:translateY(-3px); }
+    .btn:active{ transform:translateY(0); }
+    .btn.primary{
+      background:var(--navy);
+      color:var(--cream);
+      border-color:var(--navy);
+      box-shadow: 0 8px 20px rgba(5,52,58,0.12);
+    }
+
+    .hero-right{
+      width:280px;
+      flex-shrink:0;
+    }
+    .hero-right img{
+      width:100%;
+      height:auto;
+      display:block;
+      object-fit:cover;
+      background:white;
+      padding:18px;
+      border-radius:14px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.06);
+    }
+
+    /* SECTIONS */
+    .section{margin-top:34px;}
+    .section-title{
+      font-family: Georgia, serif;
+      font-size:20px;
+      margin-bottom:12px;
+    }
+
+    /* Services / cards */
+    .services{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap:16px;
+      margin-top:12px;
+    }
+    .card{
+      background:white;
+      padding:var(--pad);
+      border-radius:12px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.05);
+    }
+    .card h4{ font-family: Georgia, serif; margin-bottom:6px; }
+    .card p{ color:var(--muted); font-size:14px; }
+
+    /* Two column area */
+    .two-col{
+      display:grid;
+      grid-template-columns:1fr 320px;
+      gap:20px;
+      margin-top:14px;
+    }
+    .contact-card{
+      background:white;
+      padding:16px;
+      border-radius:12px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.05);
+    }
+
+    /* Gallery */
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap:14px;
+      margin-top:12px;
+    }
+    .gallery img{
+      width:100%;
+      height:200px;
+      object-fit:cover;
+      border-radius:12px;
+      box-shadow:0 6px 16px rgba(0,0,0,0.05);
+      display:block;
+    }
+
+    footer{
+      margin-top:28px;
+      text-align:center;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    /* Accessibility: focus-visible */
+    :focus{outline:none}
+    :focus-visible{ outline: 3px solid var(--focus); outline-offset:3px; border-radius:8px; }
+
+    /* Mobile */
+    @media (max-width:900px){
+      header{align-items:flex-start;}
+      nav{display:none;}
+      #nav-toggle{display:inline-block;}
+      .hero{flex-direction:column;align-items:flex-start;}
+      .hero-right{width:100%;}
+      .two-col{grid-template-columns:1fr;}
+    }
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      * { transition: none !important; animation: none !important; }
+    }
+
+    /* Utility */
+    .muted{ color:var(--muted); }
+    .small{font-size:13px;color:var(--muted);}
+    a.contact-link{ color:var(--navy); text-decoration:underline; }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Hopp til innhold</a>
+
+  <div class="page">
+    <header>
+      <div class="brand">
+        <img src="img/gustavsenfriluft.png" alt="Gustavsen Friluft logo" class="logo" width="84" height="84">
+        <div>
+          <h1>Gustavsen Friluft</h1>
+          <p>Folkehelse · Uterehabilitering · Friluftsliv</p>
+        </div>
+      </div>
+
+      <div class="nav-wrap">
+        <button id="nav-toggle" aria-controls="main-nav" aria-expanded="false">Meny</button>
+
+        <nav id="main-nav" aria-label="Hovednavigasjon">
+          <a href="#home">Hjem</a>
+         <!--<a href="#tjenester">Tjenester</a>-->
+          <a href="#om">Om</a>
+          <a href="#kontakt">Kontakt</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content" class="page" role="main" aria-labelledby="hero-heading">
+      <!-- HERO -->
+      <section class="hero" id="home" aria-labelledby="hero-heading">
+        <div class="hero-left">
+          <h2 id="hero-heading">Friluftsliv · Uterehabilitering · Friluftsliv</h2>
+         <p class="lead">Mitt navn er Filip Gustavsen. Velkommen til dette lille foretak</p>
+<br>
+<br>
+          <div class="cta">
+            <a class="btn primary" href="mailto:filip@gustavsenfriluft.no?subject=Forespørsel%20om%20kurs" aria-label="Kontakt via e-post">Kontakt</a>
+            <!--<a class="btn" href="#tjenester">Se tjenester</a> -->
+            <a class="btn" href="#galleri">Galleri</a>
+          </div>
+        </div>
+
+     <div class="hero-right">
+  <img
+    src="img/profil.jpg"
+    alt="Instruktør ved sjøen med surfebrett"
+    loading="eager"
+    width="280"
+    height="280"
+    style="object-fit: cover; background: white; padding: 18px; border-radius: 14px; box-shadow: 0 8px 20px rgba(0,0,0,0.06);"
+  >
+</div>
+      </section>
+
+      <!-- TJENESTER 
+      <section class="section" id="tjenester" aria-labelledby="tjenester-title">
+        <h3 id="tjenester-title" class="section-title">Tjenester</h3>
+
+        <div class="services">
+          <article class="card" aria-labelledby="surf-title">
+            <h4 id="surf-title">Surfekurs</h4>
+            <p>For nybegynnere og viderekomne. Teknikk, balanse og trygghet i bølgene.</p>
+          </article>
+
+          <article class="card" aria-labelledby="windsurf-title">
+            <h4 id="windsurf-title">Windsurfkurs</h4>
+            <p>Rigging, vindforståelse og manøvrering — tilpasset ditt nivå.</p>
+          </article>
+
+          <article class="card" aria-labelledby="livredning-title">
+            <h4 id="livredning-title">Livredningskurs</h4>
+            <p>Praktisk livredning for kyst, strand og vannaktiviteter.</p>
+          </article>
+        </div>
+      </section>
+    -->
+
+      <!-- OM + KONTAKT -->
+      <section class="section" id="om" aria-labelledby="om-title">
+        <h3 id="om-title" class="section-title">Om Gustavsenfriluft</h3>
+
+        <div class="two-col">
+          <div>
+            <p class="muted">
+              Friluftspedagog og instruktør med bred erfaring fra aktivitetsledelse, livredning, surf, windsurf og undervisning 
+              på land og i vann. Samarbeid med Listasurfing med surf og windsurfekurs for bedrifter og privatpersoner siden 2017.
+            </p>
+
+            <section aria-labelledby="erfaring-title" class="section" style="margin-top:18px;">
+              <h4 id="erfaring-title" class="section-title">Erfaring</h4>
+
+              <h5>Leirskolelærer — Evjetun Leirskole</h5>
+              <p class="small"><em>Aktiv daglig undervisning, friluftsliv, sikkerhet og elevansvar.</em></p>
+
+              <h5>Badevakt & Livredningsinstruktør — Aquarama Bad</h5>
+              <p class="small"><em>Livredningsopplæring, trygghet i vann, førstehjelp og sikkerhet i svømmeanlegg.</em></p>
+
+              <h5>Surf & Windsurf-instruktør — ListaSurfing</h5>
+              <p class="small"><em>Kurs for alle nivåer, teknikk, sjøforståelse og trygg ferdsel på havet.</em></p>
+
+              <h5>Eier — Gustavsen Friluft</h5>
+              <p class="small"><em>Mitt lille foretak hvor jeg leverer kurs, opplæring og havbaserte aktiviteter. Fokus på kvalitet, trygghet, mestring og bærekraft.</em></p>
+            </section>
+
+            <section class="section" aria-labelledby="utdanning-title" style="margin-top:16px;">
+              <h4 id="utdanning-title" class="section-title">Utdanning</h4>
+              <ul>
+                <li>Folkehelsearbeid</li>
+                <li>Arbeidsglede, selvledelse, ledelse</li>
+                <li>Friluftsliv & naturveiledning</li>
+                <li>Friluftsliv & uterehabilitering</li>
+                <li>Kurs og sertifisering innen livredning, kajakk og surf-instruksjon</li>
+              </ul>
+            </section>
+          </div>
+
+       <aside class="contact-card" id="kontakt" aria-labelledby="kontakt-title">
+  <h4 id="kontakt-title">Kontakt</h4>
+
+  <p><strong>E-post:</strong> 
+    <a class="contact-link" href="mailto:filip@gustavsenfriluft.no">filip@gustavsenfriluft.no</a>
+  </p>
+
+  <p><strong>Telefon:</strong> 
+    <a class="contact-link" href="tel:+4794435220">+47 944 35 220</a>
+  </p>
+
+  <p><strong>Lokasjon:</strong> Kristiansand / Agder</p>
+
+  <p><strong>LinkedIn:</strong>  
+    <a class="contact-link" href="https://www.linkedin.com/in/filipgustavsen" target="_blank" rel="noopener">linkedin.com/in/filipgustavsen</a>
+  </p>
+
+  <p><strong>GitHub:</strong>  
+    <a class="contact-link" href="https://github.com/filipguz" target="_blank" rel="noopener">github.com/filipguz</a>
+  </p>
+
+  <div style="margin-top:10px;">
+    <a class="btn primary" href="mailto:filip@gustavsenfriluft.no">Forespørsel</a>
+  </div>
+</aside>
+        </div>
+      </section>
+
+      <!-- GALLERI -->
+      <section class="section" id="galleri" aria-labelledby="galleri-title">
+        <h3 id="galleri-title" class="section-title">Galleri</h3>
+
+        <div class="gallery" role="list">
+          <img src="img/vintertur.jpg" alt="Vintertur i naturen" loading="lazy" width="640" height="360" role="listitem">
+          <img src="img/surfing.jpg" alt="Surfing ved kysten" loading="lazy" width="640" height="360" role="listitem">
+          <img src="img/windsurf01.jpg" alt="Windsurfing på havet" loading="lazy" width="640" height="360" role="listitem">
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+<footer>
+  <p>© <span id="year"></span> Gustavsen Friluft — Kristiansand</p>
+
+  <p class="small" style="margin-top:6px;">
+    Design & drift:
+    <a href="https://github.com/filipguz" class="contact-link" rel="noopener noreferrer" target="_blank">
+      github.com/filipguz
+    </a>
+    —
+    <a href="mailto:filip@gustavsenfriluft.com" class="contact-link">Kontakt</a>
+  </p>
+  <br>
+</footer>
+  </div>
+
+  <script>
+    // Nav toggle
+    (function(){
+      const btn = document.getElementById('nav-toggle');
+      const nav = document.getElementById('main-nav');
+
+      if (!btn || !nav) return;
+
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        // toggle visibility for assistive tech
+        if (expanded) {
+          nav.style.display = '';
+        } else {
+          nav.style.display = 'flex';
+        }
+      });
+
+      // Ensure correct initial state on small screens
+      function checkWidth(){
+        if (window.innerWidth <= 900) {
+          nav.style.display = 'none';
+          btn.setAttribute('aria-expanded', 'false');
+        } else {
+          nav.style.display = 'flex';
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      }
+      window.addEventListener('resize', checkWidth);
+      checkWidth();
+    })();
+
+    // Dynamic year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
