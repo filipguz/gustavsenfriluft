@@ -15,7 +15,7 @@ Nettsiden er laget i **ren HTML/CSS/JS**, uten rammeverk, for å være rask, let
 - Presentasjon av tjenester (surf, windsurf, livredning, bedriftskurs)
 - Responsive layout  
 - Minimal avhengigheter  
-- Lett å hoste på GitHub Pages eller Netlify
+
 
 ---
 
@@ -31,7 +31,7 @@ Nettsiden er laget i **ren HTML/CSS/JS**, uten rammeverk, for å være rask, let
 
 ```bash
 /
-├── index.html        # Hovedfilen (CV/landingsside)
-├── img/              # Bilder brukt på siden (profil, galleri, logo)
-├── README.md         # Dokumentasjonen du leser nå
-└── (valgfritt) css/  # Ekstern CSS hvis du ønsker å trekke styling ut senere
+├── index.html        
+├── img/              
+├── README.md         
+└── css/  
